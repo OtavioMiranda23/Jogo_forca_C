@@ -60,6 +60,15 @@ void revealSecretChar(char spacingSecretWord[7], char keyWord[7], char revealCha
     }
 }
 
+int verifyIsWin(char spacingSecretWord[]) {
+    for (int i = 0; i < strlen(spacingSecretWord); i++) {   
+        if(spacingSecretWord[i] == '_') {
+            return 0;
+        };
+    }
+    return 1;    
+}
+
 int main(int argc, char *argv[]) {
     int isGameEnd = 0;
     char character[3][3] = {
@@ -88,6 +97,10 @@ int main(int argc, char *argv[]) {
             errorAcc++; 
             setCharacter(character, errorAcc);
             printCharacter(character);
+        }
+        if (verifyIsWin(spacingSecretWord)) {
+            printf("Voce venceu!");
+            break;
         }    
         printf("%s", spacingSecretWord);
 
